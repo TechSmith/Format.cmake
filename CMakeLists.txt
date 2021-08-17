@@ -28,6 +28,12 @@ if(CLANG_FORMAT_PROGRAM AND Python_FOUND)
     COMMAND ${CLANG_FORMAT_COMMAND} ${GIT_EMPTY_TREE_HASH} -f
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   )
+
+  add_custom_target(
+    fix-clang-format-git-changes
+    COMMAND ${CLANG_FORMAT_COMMAND} -f
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  )
 else()
   message(STATUS "Format.cmake: clang-format and/or python not found, adding dummy targets")
 
